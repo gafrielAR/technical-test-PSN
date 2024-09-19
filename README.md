@@ -1,66 +1,99 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README</title>
+</head>
+<body>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<h1>Laravel API with Docker</h1>
 
-## About Laravel
+<p>This project is a Laravel-based API application designed to manage customer information and includes Docker support.</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<h2>Prerequisites</h2>
+<ul>
+    <li>Docker</li>
+    <li>Docker Compose</li>
+</ul>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<h2>Installation</h2>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<ol>
+    <li>Clone the repository:</li>
+    <pre><code>git clone https://github.com/your-repo/laravel-docker-app.git</code></pre>
 
-## Learning Laravel
+    <li>Navigate into the project directory:</li>
+    <pre><code>cd laravel-docker-app</code></pre>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    <li>Build and run the Docker containers:</li>
+    <pre><code>docker-compose up -d</code></pre>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    <li>Access the application at:</li>
+    <pre><code>http://localhost:8000</code></pre>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    <li>Run the database migrations (inside the container):</li>
+    <pre><code>docker-compose exec app php artisan migrate</code></pre>
+</ol>
 
-## Laravel Sponsors
+<h2>Environment Variables</h2>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+<p>The application requires the following environment variables to be set. You can define these in the <code>.env</code> file:</p>
 
-### Premium Partners
+<ul>
+    <li>DB_HOST=db</li>
+    <li>DB_PORT=3306</li>
+    <li>DB_DATABASE=customer_track</li>
+    <li>DB_USERNAME=root</li>
+    <li>DB_PASSWORD=root</li>
+    <li>APP_ENV=local</li>
+    <li>APP_DEBUG=true</li>
+</ul>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+<h2>Interacting with the API</h2>
 
-## Contributing
+<p>You can interact with the API using <strong>Postman</strong> or <strong>cURL</strong>.</p>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<h3>Create a Customer</h3>
+<pre><code>POST http://localhost:8000/api/customers</code></pre>
 
-## Code of Conduct
+<p>Body (JSON):</p>
+<pre><code>{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "phone_number": "1234567890",
+  "gender": "male"
+}
+</code></pre>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<h3>Fetch Customers</h3>
+<pre><code>GET http://localhost:8000/api/customers?limit=10</code></pre>
 
-## Security Vulnerabilities
+<h2>Accessing phpMyAdmin</h2>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<p>phpMyAdmin is included in the Docker setup for easier database management. Access it at:</p>
 
-## License
+<pre><code>http://localhost:8080</code></pre>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<p>Login using:</p>
+<ul>
+    <li><strong>Username:</strong> root</li>
+    <li><strong>Password:</strong> root</li>
+</ul>
+
+<h2>Running Tests</h2>
+
+<p>To run the provided unit tests, use the following command:</p>
+<pre><code>docker-compose exec app php artisan test</code></pre>
+
+<h2>Stopping the Application</h2>
+
+<p>To stop the application and remove the containers, run:</p>
+<pre><code>docker-compose down</code></pre>
+
+<h2>License</h2>
+
+<p>This project is licensed under the MIT License.</p>
+
+</body>
+</html>
