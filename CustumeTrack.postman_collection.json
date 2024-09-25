@@ -1,0 +1,367 @@
+{
+    "info": {
+        "_postman_id": "869bda17-5db9-4c87-b44e-0b1b03419015",
+        "name": "CustumeTrack",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "5843237"
+    },
+    "item": [
+        {
+            "name": "Customer",
+            "item": [
+                {
+                    "name": "Get",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{docker_host}}/api/customers?limit=10",
+                            "host": [
+                                "{{docker_host}}"
+                            ],
+                            "path": [
+                                "api",
+                                "customers"
+                            ],
+                            "query": [
+                                {
+                                    "key": "limit",
+                                    "value": "10"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get by Id",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{docker_host}}/api/customers/:id",
+                            "host": [
+                                "{{docker_host}}"
+                            ],
+                            "path": [
+                                "api",
+                                "customers",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "Mr. ",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "name",
+                                    "value": "Muhammad Gafriel Alfarizhi",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "gender",
+                                    "value": "male",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "phone_number",
+                                    "value": "081228711463",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "muhammad.gafriel@gmail.com",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{docker_host}}/api/customers",
+                            "host": [
+                                "{{docker_host}}"
+                            ],
+                            "path": [
+                                "api",
+                                "customers"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"title\": \"Mr.\",\r\n    \"name\": \"Muhammad Gafriel Alfarizhi\",\r\n    \"gender\": \"male\",\r\n    \"phone_number\": \"081228711463\",\r\n    \"email\": \"muhammad.gafriel@gmail.com\"\r\n}\r\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{docker_host}}/api/customers/:id",
+                            "host": [
+                                "{{docker_host}}"
+                            ],
+                            "path": [
+                                "api",
+                                "customers",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{docker_host}}/api/customers/:id",
+                            "host": [
+                                "{{docker_host}}"
+                            ],
+                            "path": [
+                                "api",
+                                "customers",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "15"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Address",
+            "item": [
+                {
+                    "name": "Get",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{docker_host}}/api/customers/:customer_id/addresses",
+                            "host": [
+                                "{{docker_host}}"
+                            ],
+                            "path": [
+                                "api",
+                                "customers",
+                                ":customer_id",
+                                "addresses"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "customer_id",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get by Id",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{docker_host}}/api/customers/:id",
+                            "host": [
+                                "{{docker_host}}"
+                            ],
+                            "path": [
+                                "api",
+                                "customers",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"customer_id\": 1,\r\n    \"address\": \"Jl. Jend A Yani\",\r\n    \"district\": \"Balikpapan Tengah\",\r\n    \"city\": \"Balikpapan\",\r\n    \"province\": \"Kalimantan Timur\",\r\n    \"postal_code\": 78242\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{docker_host}}/api/customers/:id/addresses",
+                            "host": [
+                                "{{docker_host}}"
+                            ],
+                            "path": [
+                                "api",
+                                "customers",
+                                ":id",
+                                "addresses"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"address\": \"Jl. Jend A Yani\",\r\n    \"district\": \"Balikpapan Tengah\",\r\n    \"city\": \"Balikpapan\",\r\n    \"province\": \"Kalimantan Timur\",\r\n    \"postal_code\": 78242\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{docker_host}}/api/customers/:customer_id/addresses/:id",
+                            "host": [
+                                "{{docker_host}}"
+                            ],
+                            "path": [
+                                "api",
+                                "customers",
+                                ":customer_id",
+                                "addresses",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "customer_id",
+                                    "value": "1"
+                                },
+                                {
+                                    "key": "id",
+                                    "value": "11"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{docker_host}}/api/customers/:customer_id/addresses/:id",
+                            "host": [
+                                "{{docker_host}}"
+                            ],
+                            "path": [
+                                "api",
+                                "customers",
+                                ":customer_id",
+                                "addresses",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "customer_id",
+                                    "value": "1"
+                                },
+                                {
+                                    "key": "id",
+                                    "value": "13"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "host",
+            "value": "http://custometrack.test",
+            "type": "string"
+        },
+        {
+            "key": "docker_host",
+            "value": "http://localhost:8000",
+            "type": "string"
+        }
+    ]
+}
