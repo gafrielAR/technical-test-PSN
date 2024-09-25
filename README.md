@@ -18,22 +18,22 @@
 </ul>
 
 <h2>Installation</h2>
-
 <ol>
-    <li>Clone the repository:</li>
-    <pre><code>git clone https://github.com/your-repo/laravel-docker-app.git</code></pre>
 
-    <li>Navigate into the project directory:</li>
-    <pre><code>cd laravel-docker-app</code></pre>
+    Clone the repository:
+    git clone https://github.com/gafrielAR/technical-test-PSN.git
 
-    <li>Build and run the Docker containers:</li>
-    <pre><code>docker-compose up -d</code></pre>
+    Navigate into the project directory:
+    cd technical-test-PSN
 
-    <li>Access the application at:</li>
-    <pre><code>http://localhost:8000</code></pre>
+    Build and run the Docker containers:
+    docker-compose up -d
 
-    <li>Run the database migrations (inside the container):</li>
-    <pre><code>docker-compose exec app php artisan migrate</code></pre>
+    Access the application at:
+    http://localhost:8000
+
+    Run the database migrations (inside the container):
+    docker-compose exec app php artisan migrate
 </ol>
 
 <h2>Environment Variables</h2>
@@ -44,8 +44,8 @@
     <li>DB_HOST=db</li>
     <li>DB_PORT=3306</li>
     <li>DB_DATABASE=customer_track</li>
-    <li>DB_USERNAME=root</li>
-    <li>DB_PASSWORD=root</li>
+    <li>DB_USERNAME=user</li>
+    <li>DB_PASSWORD=password</li>
     <li>APP_ENV=local</li>
     <li>APP_DEBUG=true</li>
 </ul>
