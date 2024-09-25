@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 
 // Models
+use App\Models\Address;
 use App\Models\Customer;
 use App\Models\User;
 
@@ -17,6 +18,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-        Customer::factory(10)->create();
+        Address::factory(10)->create();
     }
 }

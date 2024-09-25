@@ -82,7 +82,7 @@ class AddressController extends Controller
     {
         try {
             Address::where('customer_id', $customer_id)->findOrFail($id)->delete();
-            return $this->sendResponse(null, 'Address deleted successfully', 204);
+            return $this->sendResponse(null, 'Address deleted successfully', 200);
         } catch (\Throwable $th) {
             return $this->sendResponse([], $th->getMessage(), $th->getCode() ?: 500);
         }

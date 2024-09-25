@@ -33,8 +33,7 @@ class CustomerController extends Controller
             $data = Customer::paginate($limit);
             return $this->sendResponse($data->items(), 'Success get customer data', 200, $data->total());
         } catch (\Throwable $th) {
-            $errorCode = $th->getCode() ? $th->getCode() : 500;
-            return $this->sendResponse([], $th->getMessage(), $errorCode, 0);
+            return $this->sendResponse([], $th->getMessage(), 500, 0);
         }
     }
 
@@ -53,41 +52,39 @@ class CustomerController extends Controller
 
             return $this->sendResponse($customer, 'Customer created successfully', 201);
         } catch (\Throwable $th) {
-            $errorCode = $th->getCode() ? $th->getCode() : 500;
-            return $this->sendResponse([], $th->getMessage(), $errorCode, 0);
+            return $this->sendResponse([], $th->getMessage(), 500, 0);
         }
     }
 
     public function show($id)
     {
         try {
-            $customer = Customer::findOrFail($id);
+            $customer = Customer::with('addresses')->findOrFail($id);
             return $this->sendResponse($customer, 'Customer retrieved successfully', 200);
         } catch (\Throwable $th) {
             $errorCode = $th->getCode() ? $th->getCode() : 500;
-            return $this->sendResponse([], $th->getMessage(), $errorCode, 0);
+            return $this->sendResponse([], $th->getMessage(), 500, 0);
         }
     }
 
     public function update(Request $request, $id)
     {
         try {
-            $customer = Customer::findOrFail($id);
-
             $validated = $request->validate([
-                'title' => 'string',
-                'name' => 'string',
-                'gender' => 'in:male,female',
-                'phone_number' => 'string',
-                'email' => 'nullable|email|unique:customers,email,' . $customer->id,
+                'title' => 'nullable|string',
+                'name' => 'nullable|string',
+                'gender' => 'nullable|in:male,female',
+                'phone_number' => 'nullable|string',
+                'email' => 'nullable|email|unique:customers,email,' . $id,
             ]);
 
+            $customer = Customer::findOrFail($id);
             $customer->update($validated);
 
             return $this->sendResponse($customer, 'Customer updated successfully', 200);
         } catch (\Throwable $th) {
             $errorCode = $th->getCode() ? $th->getCode() : 500;
-            return $this->sendResponse([], $th->getMessage(), $errorCode, 0);
+            return $this->sendResponse([], $th->getMessage(), 500, 0);
         }
     }
 
@@ -97,10 +94,10 @@ class CustomerController extends Controller
             $customer = Customer::findOrFail($id);
             $customer->delete();
 
-            return $this->sendResponse([], 'Customer deleted successfully', 204);
+            return $this->sendResponse([], 'Customer deleted successfully', 200);
         } catch (\Throwable $th) {
             $errorCode = $th->getCode() ? $th->getCode() : 500;
-            return $this->sendResponse([], $th->getMessage(), $errorCode, 0);
+            return $this->sendResponse([], $th->getMessage(), 500, 0);
         }
     }
 }
